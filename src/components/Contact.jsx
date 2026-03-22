@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from 'react-icons/hi'
 import { FiSend } from 'react-icons/fi'
@@ -13,8 +13,23 @@ export default function Contact() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
-  const handleSendEmail = () => {
-    window.location.href = 'mailto:harshbpatel151@gmail.com?subject=Hello from your portfolio'
+  const [formData, setFormData] = useState({ subject: '', message: '' })
+  const [status, setStatus] = useState(null) // 'sending' | 'sent' | 'error'
+
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setStatus('sending')
+    const mailtoLink = `mailto:harshbpatel151@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(formData.message)}`
+    window.location.href = mailtoLink
+    setTimeout(() => {
+      setStatus('sent')
+      setFormData({ subject: '', message: '' })
+      setTimeout(() => setStatus(null), 3000)
+    }, 1000)
   }
 
   return (
@@ -74,7 +89,7 @@ export default function Contact() {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.4 + i * 0.12 }}
                 whileHover={{ x: 10, scale: 1.02, transition: { duration: 0.2 } }}
-                className="card-hover flex items-center gap-4 p-4 bg-white dark:bg-[#0f1629] rounded-xl border border-border cursor-default group"
+                className="card-hover flex items-center gap-4 p-4 bg-white dark:bg-surface rounded-xl border border-border cursor-default group"
               >
                 <motion.span
                   className={`w-11 h-11 flex items-center justify-center rounded-xl bg-linear-to-br ${item.gradient} text-white shadow-md`}
@@ -108,40 +123,52 @@ export default function Contact() {
             </motion.div>
           </motion.div>
 
-          {/* Send email CTA */}
-          <motion.div
+          {/* Contact form */}
+          <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="card-hover bg-white dark:bg-[#0f1629] border border-border rounded-2xl p-8 flex flex-col items-center text-center"
+            className="card-hover bg-white dark:bg-surface border border-border rounded-2xl p-8 space-y-5"
           >
-            <motion.div
-              className="w-16 h-16 flex items-center justify-center rounded-2xl bg-linear-to-br from-primary to-accent text-white shadow-lg mb-6"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <HiOutlineMail size={28} />
-            </motion.div>
-            <h3 className="text-xl font-bold mb-2">Drop me an email</h3>
-            <p className="text-text-muted text-sm mb-6 max-w-sm">
-              Click below to open your email client and send me a message directly.
-            </p>
+            <h3 className="text-xl font-bold mb-1">Send me a message</h3>
+            <div>
+              <label htmlFor="subject" className="text-text-muted text-xs font-medium uppercase tracking-wider mb-1.5 block">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl bg-surface-light dark:bg-dark border border-border text-text text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                placeholder="Subject"
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="text-text-muted text-xs font-medium uppercase tracking-wider mb-1.5 block">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                className="w-full px-4 py-3 rounded-xl bg-surface-light dark:bg-dark border border-border text-text text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
+                placeholder="Your message..."
+              />
+            </div>
             <motion.button
-              onClick={handleSendEmail}
-              className="magnetic-btn flex items-center gap-2 px-8 py-3.5 bg-linear-to-r from-primary to-primary-dark text-white font-semibold rounded-full"
-              whileHover={{ scale: 1.05, y: -3 }}
+              type="submit"
+              disabled={status === 'sending'}
+              className="w-full flex items-center justify-center gap-2 px-8 py-3.5 bg-linear-to-r from-primary to-primary-dark text-white font-semibold rounded-full disabled:opacity-60"
+              whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
               <FiSend size={16} />
-              Send Email
-              <motion.span
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                →
-              </motion.span>
+              {status === 'sending' ? 'Opening email...' : status === 'sent' ? 'Email client opened!' : 'Send Message'}
             </motion.button>
-          </motion.div>
+          </motion.form>
         </div>
       </div>
     </section>

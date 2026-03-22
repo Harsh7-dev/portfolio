@@ -1,3 +1,4 @@
+import ErrorBoundary from './components/ErrorBoundary'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -12,7 +13,7 @@ import ScrollProgress from './components/ScrollProgress'
 
 export default function App() {
   return (
-    <>
+    <ErrorBoundary>
       <MouseGlow />
       <ScrollProgress />
       <Navbar />
@@ -24,6 +25,6 @@ export default function App() {
       <Certifications />
       <Contact />
       <Footer />
-    </>
+    </ErrorBoundary>
   )
 }

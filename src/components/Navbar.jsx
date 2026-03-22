@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 import ThemeToggle from './ThemeToggle'
@@ -28,6 +28,11 @@ export default function Navbar() {
     }
   })
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [isOpen])
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -35,7 +40,7 @@ export default function Navbar() {
       transition={{ duration: 0.35, ease: 'easeInOut' }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/70 dark:bg-[#0a0e1a]/80 backdrop-blur-2xl border-b border-border shadow-[0_1px_3px_rgba(0,0,0,0.05)]'
+          ? 'bg-white/70 dark:bg-dark/80 backdrop-blur-2xl border-b border-border shadow-[0_1px_3px_rgba(0,0,0,0.05)]'
           : 'bg-transparent'
       }`}
     >
@@ -111,7 +116,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden bg-white/95 dark:bg-[#0f1629]/95 backdrop-blur-2xl border-b border-border overflow-hidden"
+            className="md:hidden bg-white/95 dark:bg-surface/95 backdrop-blur-2xl border-b border-border overflow-hidden"
           >
             <ul className="flex flex-col items-center gap-6 py-8">
               {navLinks.map((link, i) => (

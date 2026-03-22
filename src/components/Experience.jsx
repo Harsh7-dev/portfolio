@@ -83,7 +83,7 @@ function ExperienceCard({ exp, i, isInView }) {
     >
       {/* Timeline dot */}
       <motion.div
-        className={`absolute -left-1.5 top-6 w-3.5 h-3.5 rounded-full bg-linear-to-br ${exp.gradient} border-2 border-white dark:border-[#0a0e1a] shadow-md ${exp.shadow}`}
+        className={`absolute -left-1.5 top-6 w-3.5 h-3.5 rounded-full bg-linear-to-br ${exp.gradient} border-2 border-white dark:border-dark shadow-md ${exp.shadow}`}
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : {}}
         transition={{ duration: 0.4, delay: 0.4 + i * 0.2, type: 'spring', stiffness: 300 }}
@@ -98,7 +98,7 @@ function ExperienceCard({ exp, i, isInView }) {
       )}
 
       <motion.div
-        className={`card-hover bg-white dark:bg-[#0f1629] border border-border rounded-2xl p-6 group relative overflow-hidden`}
+        className={`card-hover bg-white dark:bg-surface border border-border rounded-2xl p-6 group relative overflow-hidden`}
         whileHover={{ x: 6, transition: { duration: 0.2 } }}
       >
         {/* Subtle colored left accent */}

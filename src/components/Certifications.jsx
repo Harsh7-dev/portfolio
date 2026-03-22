@@ -56,7 +56,7 @@ export default function Certifications() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15, ease: [0.25, 0.4, 0.25, 1] }}
               whileHover={{ y: -8, transition: { duration: 0.3, type: 'spring', stiffness: 300 } }}
-              className="group relative bg-white dark:bg-[#0f1629] border border-border rounded-2xl p-6 card-hover overflow-hidden block"
+              className="group relative bg-white dark:bg-surface border border-border rounded-2xl p-6 card-hover overflow-hidden block"
             >
               {/* Gradient accent bar */}
               <motion.div

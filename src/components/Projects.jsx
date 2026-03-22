@@ -107,7 +107,7 @@ export default function Projects() {
               whileHover={{ y: -12, transition: { duration: 0.3, type: 'spring', stiffness: 300 } }}
               onHoverStart={() => setHoveredProject(i)}
               onHoverEnd={() => setHoveredProject(null)}
-              className="group relative bg-white dark:bg-[#0f1629] border border-border rounded-2xl overflow-hidden card-hover cursor-default"
+              className="group relative bg-white dark:bg-surface border border-border rounded-2xl overflow-hidden card-hover cursor-default"
             >
               {/* Animated gradient bar */}
               <motion.div

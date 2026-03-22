@@ -13,7 +13,7 @@ export default function Footer() {
       {/* Back to top */}
       <motion.a
         href="#"
-        className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-surface dark:bg-[#0f1629] border border-border text-text-muted hover:text-primary hover:border-primary shadow-md dark:shadow-black/30 transition-all"
+        className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-surface dark:bg-surface border border-border text-text-muted hover:text-primary hover:border-primary shadow-md dark:shadow-black/30 transition-all"
         whileHover={{ y: -4, scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0, y: 10 }}

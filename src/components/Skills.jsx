@@ -112,7 +112,7 @@ export default function Skills() {
               whileHover={{ y: -10, transition: { duration: 0.25, type: 'spring', stiffness: 300 } }}
               onHoverStart={() => setHoveredCard(i)}
               onHoverEnd={() => setHoveredCard(null)}
-              className={`card-hover bg-white dark:bg-[#0f1629] border border-border ${cat.border} rounded-2xl p-6 cursor-default relative overflow-hidden`}
+              className={`card-hover bg-white dark:bg-surface border border-border ${cat.border} rounded-2xl p-6 cursor-default relative overflow-hidden`}
             >
               {/* Background gradient glow */}
               <motion.div

@@ -3,7 +3,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { FiArrowDown } from 'react-icons/fi'
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
-import { SiDatabricks, SiAccenture } from 'react-icons/si'
+import { SiDatabricks, SiAccenture, SiLeetcode } from 'react-icons/si'
 import crestLogo from '../assets/gradient_logo.png'
 import profilePic from '../assets/profile.png'
 
@@ -204,7 +204,7 @@ export default function Hero() {
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <img src={profilePic} alt="Harsh Patel" className="w-full h-full object-cover" />
+            <img src={profilePic} alt="Harsh Patel" className="w-full h-full object-cover" loading="lazy" />
           </motion.div>
 
           {/* Curved arrows between milestones */}
@@ -259,7 +259,7 @@ export default function Hero() {
 
           {/* Company milestones on the wheel */}
           {[
-            { icon: <img src={crestLogo} alt="Crest Data" className="w-20 h-8 object-contain brightness-0 invert" />, label: 'Crest Data', year: '2021', gradient: 'from-accent to-primary', angle: -90, isImage: true },
+            { icon: <img src={crestLogo} alt="Crest Data" className="w-20 h-8 object-contain brightness-0 invert" loading="lazy" />, label: 'Crest Data', year: '2021', gradient: 'from-accent to-primary', angle: -90, isImage: true },
             { icon: <SiAccenture size={22} />, label: 'Accenture', year: '2022', gradient: 'from-purple-500 to-violet-600', angle: 30 },
             { icon: <SiDatabricks size={22} />, label: 'Databricks', year: '2025', gradient: 'from-red-500 to-orange-500', angle: 150 },
           ].map((milestone, i) => {
@@ -351,7 +351,7 @@ export default function Hero() {
             className="text-text-muted text-lg md:text-xl max-w-xl mb-8 leading-relaxed"
           >
             Building scalable Spring Boot microservices and distributed systems,
-            improving performance and reliability using Kafka, PostgreSQL, Redis, and AWS.
+            improving performance and reliability using Kafka, PostgreSQL, Redis, and AWS. Passionate about cloud and AI/ML.
           </motion.p>
 
           <motion.div
@@ -405,6 +405,7 @@ export default function Hero() {
               { icon: <FaLinkedinIn size={18} />, href: 'https://www.linkedin.com/in/harshhk/', color: 'hover:bg-primary', label: 'LinkedIn' },
               { icon: <FaGithub size={18} />, href: 'https://github.com/Harsh7-dev', color: 'hover:bg-gray-800', label: 'GitHub' },
               { icon: <HiOutlineMail size={18} />, href: 'mailto:harshbpatel151@gmail.com', color: 'hover:bg-primary', label: 'Email' },
+              { icon: <SiLeetcode size={18} />, href: 'https://leetcode.com/u/hbp227/', color: 'hover:bg-yellow-500', label: 'LeetCode' },
             ].map((item, i) => (
               <motion.a
                 key={i}
@@ -412,19 +413,21 @@ export default function Hero() {
                 target={item.href.startsWith('mailto') ? undefined : '_blank'}
                 rel={item.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
                 aria-label={item.label}
-                className={`w-12 h-12 flex items-center justify-center rounded-full border-2 border-border text-text-muted ${item.color} hover:text-white hover:border-transparent transition-all`}
-                animate={{ y: [0, -8, 0] }}
+                className={`relative group w-12 h-12 flex items-center justify-center rounded-full border-2 border-border text-text-muted ${item.color} hover:text-white hover:border-transparent transition-all`}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: 1.2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: i * 0.3,
-                  repeatDelay: 1.5,
+                  duration: 0.5,
+                  ease: 'easeOut',
+                  delay: 1.5 + i * 0.15,
                 }}
                 whileHover={{ scale: 1.2, y: -4, rotate: [0, -5, 5, 0] }}
                 whileTap={{ scale: 0.9 }}
               >
                 {item.icon}
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs font-medium text-white bg-primary/90 backdrop-blur-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                  {item.label}
+                </span>
               </motion.a>
             ))}
           </motion.div>
