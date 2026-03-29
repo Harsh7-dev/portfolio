@@ -6,7 +6,7 @@ const keywords = [
   'PostgreSQL', 'Redis', 'Maven', 'Docker', 'Kubernetes', 'AWS', 'AWS EC2',
   'Prometheus', 'Grafana', 'ELK Stack', 'AWS CloudWatch', 'JMeter', 'JVM',
   'HikariCP', 'Swagger', 'OpenAPI', 'RabbitMQ', 'MongoDB', 'Liquibase',
-  'Hibernate', 'GC', 'CI/CD', 'EKS', 'SQL',
+  'Hibernate', 'GC', 'CI/CD', 'EKS', 'SQL', 'Jenkins',
 ]
 
 function highlightKeywords(text) {
@@ -29,11 +29,10 @@ const experiences = [
     shadow: 'shadow-red-500/20',
     current: true,
     bullets: [
-      'Designed and implemented scalable Java Spring Boot microservices for internal data platform services, building RESTful APIs and event-driven workflows using Apache Kafka, PostgreSQL, Redis, and Maven.',
-      'Improved API latency by 32% and increased throughput by 45% through JVM tuning, SQL optimization, HikariCP connection pooling, and Redis caching.',
-      'Enhanced production observability by integrating Prometheus, Grafana, ELK Stack, and AWS CloudWatch, reducing incident resolution time by 40%.',
-      'Increased system stability under peak traffic by 35% via load testing with JMeter, JVM profiling, and GC optimization.',
-      'Designed and maintained versioned REST APIs with Swagger/OpenAPI documentation, implementing request validation, exception handling, and backward compatibility strategies.',
+      'Engineered a dataset lineage and metadata service using Java and Spring Boot to track dependencies between upstream pipelines and downstream tables, enabling engineers to identify impacted workloads across 12K+ datasets while reducing analysis time from hours to minutes.',
+      'Architected a Kafka-based telemetry ingestion service that collects execution statistics from distributed SQL workloads, processing 10M+ query events daily and cutting query performance troubleshooting time by 40% for platform teams.',
+      'Containerized metadata services using Docker and deployed them to Kubernetes, reducing deployment failures by 60% and improving scalability to handle 5K+ concurrent requests.',
+      'Established centralized observability and deployment pipelines using ELK Stack and Jenkins CI/CD, reducing mean time to detection (MTTD) for production issues by 50% and accelerating release cycles by 40%.',
     ],
   },
   {
@@ -44,24 +43,24 @@ const experiences = [
     shadow: 'shadow-purple-500/20',
     current: false,
     bullets: [
-      'Built and maintained Java Spring Boot microservices for healthcare applications with modular REST APIs, data validation, and async messaging via RabbitMQ.',
-      'Implemented async processing pipelines using RabbitMQ, MongoDB, and Redis, reducing end-to-end processing time by 25%.',
-      'Designed healthcare data caching and indexing strategies using Redis and PostgreSQL, reducing database load by 30%.',
-      'Collaborated with cross-functional teams to implement event-driven microservices using Kafka, Spring Boot, and Docker with idempotent message handling.',
+      'Delivered transaction validation services using Java and Spring Boot, enforcing regulatory rules on payment requests and processing 1M+ transactions daily with 99.99% accuracy.',
+      'Designed a Kafka event streaming pipeline that publishes validated transactions to fraud detection systems, slashing fraud detection latency from 10 minutes to near real-time.',
+      'Introduced a Redis caching layer for frequently accessed customer account data, reducing database query load by 70% and improving API response time from 150ms to 25ms.',
+      'Architected backend services supporting loan underwriting workflows using Spring Boot and REST APIs, aggregating credit history and financial records used by analysts to evaluate loan applications.',
     ],
   },
   {
-    company: 'Crest Data',
+    company: 'Crest Data Systems',
     role: 'Software Engineer',
     date: 'Jun 2021 — Aug 2022',
     gradient: 'from-accent to-primary',
     shadow: 'shadow-cyan-500/20',
     current: false,
     bullets: [
-      'Developed Java Spring Boot microservices for financial transaction processing with REST APIs, async messaging, and input validation using Kafka, PostgreSQL, and Redis.',
-      'Designed and deployed containerized microservices using Docker, Kubernetes (EKS), AWS EC2, with automated CI/CD pipelines.',
-      'Led a remote backend team, conducting design discussions, mentoring interns, reviewing code, and defining API standards.',
-      'Enhanced data consistency by introducing database migrations, schema versioning, and transactional integrity with Liquibase, PostgreSQL, and Hibernate.',
+      'Developed eligibility verification microservices using Java, Spring Boot, and REST APIs, replacing a legacy batch process with real-time APIs that validate patient insurance coverage before claim submission, slashing verification time from 24 hours to under 2 seconds.',
+      'Built asynchronous claim processing services using Spring Boot and message-based workflows, enabling hospitals to submit and track claims while processing 500K+ claims monthly with 99.9% uptime.',
+      'Implemented a PHI audit-trail service using MongoDB change streams, capturing patient data access events to support HIPAA compliance while managing hundreds of millions of audit records.',
+      'Refactored claim validation logic using the Strategy design pattern, reducing code duplication by 40% and enabling dynamic payer-specific rules across 50+ insurance providers.',
     ],
   },
 ]

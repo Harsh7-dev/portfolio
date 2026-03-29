@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { FaCode, FaServer, FaDatabase, FaCloud, FaVial, FaShieldAlt } from 'react-icons/fa'
+import { FaCode, FaServer, FaDatabase, FaCloud, FaVial, FaShieldAlt, FaDesktop } from 'react-icons/fa'
 
 const skillCategories = [
   {
@@ -33,7 +33,7 @@ const skillCategories = [
     gradient: 'from-accent to-primary',
     bg: 'bg-cyan-50 dark:bg-cyan-500/15 dark:text-cyan-300',
     border: 'hover:border-cyan-300',
-    skills: ['AWS (EC2, ECS, Lambda, S3)', 'Docker', 'Kubernetes', 'CI/CD'],
+    skills: ['AWS (EC2, ECS, Lambda, S3)', 'Docker', 'Kubernetes', 'Jenkins', 'CI/CD'],
   },
   {
     title: 'Testing & Monitoring',
@@ -44,11 +44,19 @@ const skillCategories = [
     skills: ['JUnit', 'Mockito', 'Prometheus', 'Grafana', 'ELK Stack'],
   },
   {
-    title: 'Security & Tools',
-    icon: <FaShieldAlt />,
+    title: 'Frontend',
+    icon: <FaDesktop />,
     gradient: 'from-rose-500 to-pink-600',
     bg: 'bg-rose-50 dark:bg-rose-500/15 dark:text-rose-300',
     border: 'hover:border-rose-300',
+    skills: ['React', 'Angular', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
+  },
+  {
+    title: 'Security & Tools',
+    icon: <FaShieldAlt />,
+    gradient: 'from-slate-500 to-gray-600',
+    bg: 'bg-slate-50 dark:bg-slate-500/15 dark:text-slate-300',
+    border: 'hover:border-slate-300',
     skills: ['TLS/SSL', 'OAuth 2.0', 'JWT', 'Git', 'Maven'],
   },
 ]

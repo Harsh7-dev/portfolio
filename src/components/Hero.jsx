@@ -70,8 +70,8 @@ function AnimatedCounter({ value, suffix = '', duration = 2 }) {
 
 const stats = [
   { value: 3, suffix: '+', label: 'Years Experience' },
-  { value: 45, suffix: '%', label: 'Throughput Increased' },
-  { value: 40, suffix: '%', label: 'Faster Incident Resolution' },
+  { value: 60, suffix: '%', label: 'Fewer Deployment Failures' },
+  { value: 50, suffix: '%', label: 'Faster Incident Detection' },
 ]
 
 const textReveal = {

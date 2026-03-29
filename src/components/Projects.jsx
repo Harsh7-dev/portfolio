@@ -1,13 +1,15 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { FiExternalLink, FiGithub } from 'react-icons/fi'
-import { FaLink, FaDumbbell, FaSeedling } from 'react-icons/fa'
+import { FaLink, FaDumbbell, FaSeedling, FaUtensils } from 'react-icons/fa'
 
 const keywords = [
   'AWS Lambda', 'DynamoDB', 'API Gateway', 'SNS', 'EventBridge', 'Google Maps',
   'Spring Boot', 'PostgreSQL', 'REST API', 'REST APIs', 'RESTful', 'JPA', 'Maven',
   'JWT', 'OpenAPI', 'JUnit', 'Python', 'Java', 'CRUD',
   'serverless', 'barcode scanning', 'authentication',
+  'Spring AI', 'Google Gemini', 'SSE', 'React', 'TypeScript', 'Docker', 'AWS ECS',
+  'streaming', 'structured output',
 ]
 
 function highlightKeywords(text) {
@@ -22,6 +24,16 @@ function highlightKeywords(text) {
 }
 
 const projects = [
+  {
+    title: 'CookGenie',
+    description:
+      'An AI-powered recipe assistant showcasing Spring AI integration with Google Gemini. Features real-time streaming via SSE, structured output extraction into typed Java records, autonomous tool calling for nutrition lookup and ingredient substitution, and conversation memory across turns.',
+    tech: ['React', 'TypeScript', 'Spring Boot', 'Spring AI', 'Google Gemini', 'SSE', 'Docker', 'AWS ECS'],
+    github: 'https://github.com/Harsh7-dev/CookGenie',
+    live: null,
+    gradient: 'from-orange-500 to-amber-500',
+    icon: <FaUtensils size={18} />,
+  },
   {
     title: 'Food Waste Management',
     description:

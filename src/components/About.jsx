@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { HiOutlineLocationMarker, HiOutlineAcademicCap, HiOutlineBriefcase } from 'react-icons/hi'
 
 const infoItems = [
-  { icon: <HiOutlineLocationMarker size={20} />, label: 'Location', value: 'Hayward, CA', gradient: 'from-rose-500 to-pink-500' },
+  { icon: <HiOutlineLocationMarker size={20} />, label: 'Location', value: 'San Francisco, CA', gradient: 'from-rose-500 to-pink-500' },
   { icon: <HiOutlineAcademicCap size={20} />, label: 'Education', value: 'M.S. Computer Science, CSU East Bay', gradient: 'from-primary to-purple-500' },
   { icon: <HiOutlineBriefcase size={20} />, label: 'Current', value: 'Software Engineer @ Databricks', gradient: 'from-accent to-cyan-400' },
 ]
